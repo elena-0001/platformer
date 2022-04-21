@@ -7,19 +7,19 @@ import System.Random
 
 handleEvent :: Event -> GameState -> GameState
 handleEvent (EventKey (SpecialKey KeySpace) Down _ _) state
-      | last_in_tuple(gameMode state)  = initGameInit (mkStdGen 100) state
+      | GameOver <- (gameMode state)  = initGameInit (mkStdGen 100) state   
       | otherwise = state
-handleEvent (EventKey (SpecialKey KeyUp) Down _ _) state = makePlayerVert speed state
-handleEvent (EventKey (SpecialKey KeyUp) Up _ _) state = makePlayerVert 0 state
-handleEvent (EventKey (SpecialKey KeyDown) Down _ _) state = makePlayerVert (-speed) state
-handleEvent (EventKey (SpecialKey KeyDown) Up _ _) state = makePlayerVert 0 state
-handleEvent (EventKey (SpecialKey KeyLeft) Down _ _) state = makePlayerHor (-speed) state
-handleEvent (EventKey (SpecialKey KeyLeft) Up _ _) state = makePlayerHor 0 state
-handleEvent (EventKey (SpecialKey KeyRight) Down _ _) state = makePlayerHor speed state
-handleEvent (EventKey (SpecialKey KeyRight) Up _ _) state = makePlayerHor 0 state
-handleEvent (EventKey (Char 'h') Down _ _) state = gamemode 200 state                                                    
-handleEvent (EventKey (Char 'l') Down _ _) state = gamemode 600 state
-handleEvent (EventKey (SpecialKey KeyEnter) Down _ _) state = gamestart False state
+handleEvent (EventKey (SpecialKey KeyUp) Down _ _) (GameState sa sb sc sd InGame se) = makePlayerVert speed (GameState sa sb sc sd InGame se)
+handleEvent (EventKey (SpecialKey KeyUp) Up _ _) (GameState sa sb sc sd InGame se) = makePlayerVert 0 (GameState sa sb sc sd InGame se)
+handleEvent (EventKey (SpecialKey KeyDown) Down _ _) (GameState sa sb sc sd InGame se) = makePlayerVert (-speed) (GameState sa sb sc sd InGame se)
+handleEvent (EventKey (SpecialKey KeyDown) Up _ _) (GameState sa sb sc sd InGame se) = makePlayerVert 0 (GameState sa sb sc sd InGame se)
+handleEvent (EventKey (SpecialKey KeyLeft) Down _ _) (GameState sa sb sc sd InGame se) = makePlayerHor (-speed) (GameState sa sb sc sd InGame se)
+handleEvent (EventKey (SpecialKey KeyLeft) Up _ _) (GameState sa sb sc sd InGame se) = makePlayerHor 0 (GameState sa sb sc sd InGame se)
+handleEvent (EventKey (SpecialKey KeyRight) Down _ _) (GameState sa sb sc sd InGame se) = makePlayerHor speed (GameState sa sb sc sd InGame se)
+handleEvent (EventKey (SpecialKey KeyRight) Up _ _) (GameState sa sb sc sd InGame se) = makePlayerHor 0 (GameState sa sb sc sd InGame se)
+handleEvent (EventKey (Char 'h') Down _ _) (GameState sa sb sc sd Settings _) = (GameState sa sb sc sd Settings 200)                                                   
+handleEvent (EventKey (Char 'l') Down _ _) (GameState sa sb sc sd Settings _) = (GameState sa sb sc sd Settings 600)
+handleEvent (EventKey (SpecialKey KeyEnter) Down _ _) (GameState sa sb sc sd Settings se) = gamestart False (GameState sa sb sc sd Settings se)
 handleEvent _ state = state
  
 
@@ -33,12 +33,8 @@ makePlayerHor sp state = state {gamePlayer = make (gamePlayer state)}
   where
     make player = player { xSpeed = sp }
     
-gamemode :: Float -> GameState -> GameState
-gamemode offset state = state {gamedefaultOffset = offset}
 
 gamestart :: Bool -> GameState -> GameState
-gamestart False state = state {gameMode = (False, True, False)}
+gamestart False state = state {gameMode = InGame}
 gamestart _ state = state
 
-last_in_tuple :: (Bool, Bool, Bool) -> Bool
-last_in_tuple (_, _, c) = c

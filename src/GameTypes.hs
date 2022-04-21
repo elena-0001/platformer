@@ -15,17 +15,16 @@ data Square = Square{
 type Player = Square
 type Obstacle = Square
 type Background = Square
-    
+
+data GameMode = Settings | InGame | GameOver
+ 
 data GameState = GameState{
     gameObstacles :: [Obstacle]
     ,gamePlayer :: Player   
     ,gameBackground :: Background
     ,gameScore :: Float
---    ,gameGameOver :: Bool
---    ,gameScreen :: Bool -- new
-    ,gameMode :: (Bool, Bool, Bool) --gameScreen gameGame gameGameOver 
---    ,speedPlat :: Float --new
-    ,gamedefaultOffset :: Float --new
+    ,gameMode :: GameMode
+    ,gamedefaultOffset :: Float
     }
 
 data Images = Images{

@@ -10,7 +10,7 @@ initGameInit g newstate = GameState
    gamePlayer = initPlayer,
    gameScore  = 0,
    gameBackground = initBackground,
-   gameMode = gameMode newstate, 
+   gameMode = Settings, 
    gamedefaultOffset = gamedefaultOffset newstate
   }
 
@@ -87,7 +87,7 @@ defaultState = GameState
   gamePlayer = initPlayer,
   gameScore  = 0,
   gameBackground = initBackground,
-  gameMode = (True, False, False),
+  gameMode = Settings,
 --  gameGameOver = False,
 --  speedPlat = 550,
   gamedefaultOffset = 200

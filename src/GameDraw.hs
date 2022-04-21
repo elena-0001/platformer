@@ -3,31 +3,38 @@ module GameDraw where
 import Graphics.Gloss.Interface.Pure.Game
 import GameTypes
 
-drawGameInit :: Picture -> Bool -> Picture
+drawGameInit :: Picture -> GameState -> Picture
 -- drawGameInit bgrd_0 y z = drawBackground (picBackground pic) DrawGame y handleMouseClick
-drawGameInit pic True = pictures
-   [drawBackground pic, 
-   drawText h_or_l]
-drawGameInit _ _ = blank
+drawGameInit image state = pictures
+   [drawBackground image, 
+    drawText (h_or_l ++ (show $ gamedefaultOffset state))]
    
 
 -- Выбор режима
 drawText :: String -> Picture
-drawText a = Color white (scale 0.5 0.5 (Translate x y (text (show a))))
- where
-   (x, y) = (-1200, 600)
+drawText a = Color white $ scale 0.3 0.3 $ text (show a)
 
 
 -- Отобразить игровое поле
+--drawGame :: Images -> GameState-> Picture
+--drawGame pic g = pictures
+--  [drawGameInit (picBackground pic) (first_in_tuple(gameMode g)),
+--   drawBackground (picBackground pic),
+--   drawPlayer (picPlayer pic) (gamePlayer g),
+--   drawObstacles (gameObstacles g),
+--   drawScore (gameScore g),
+--   drawGameOver (picGameOver pic) (last_in_tuple(gameMode g))
+--  ]
+  
 drawGame :: Images -> GameState-> Picture
-drawGame pic g = pictures
-  [drawGameInit (picBackground pic) (first_in_tuple(gameMode g)),
-   drawBackground (picBackground pic),
-   drawPlayer (picPlayer pic) (gamePlayer g),
-   drawObstacles (gameObstacles g),
-   drawScore (gameScore g),
-   drawGameOver (picGameOver pic) (last_in_tuple(gameMode g))
-  ]
+drawGame pic g = case (gameMode g) of 
+  Settings -> drawGameInit (picBackground pic) g
+  InGame -> pictures 
+            [drawBackground (picBackground pic),
+             drawPlayer (picPlayer pic) (gamePlayer g),
+             drawObstacles (gameObstacles g),
+             drawScore (gameScore g)]
+  GameOver -> drawGameOver (picGameOver pic)
 
 -- Нарисовать задний фон
 drawBackground :: Picture -> Picture
@@ -60,11 +67,10 @@ drawObstacle ob = color (greyN 0.5) (translate x y (rectangleSolid (platformWidt
  where
    (x, y) = ((xLeft ob) + platformWidth/2, (yBottom ob) + platformHeight/2)
 
-drawGameOver :: Picture -> Bool -> Picture
-drawGameOver image True = translate x y image
+drawGameOver :: Picture -> Picture
+drawGameOver image = translate x y image
  where
    (x, y) = (0, 0)
-drawGameOver _ _ = blank
 
 last_in_tuple :: (Bool, Bool, Bool) -> Bool
 last_in_tuple (_, _, c) = c

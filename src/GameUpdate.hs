@@ -3,8 +3,10 @@ module GameUpdate where
 import GameTypes
 
 updateGame :: Time -> GameState -> GameState
+updateGame _ (GameState sa sb sc sd Settings se) = (GameState sa sb sc sd Settings se)
+updateGame _ (GameState sa sb sc sd GameOver se) = (GameState sa sb sc sd GameOver se)
 updateGame dt state
-  | collision (gamePlayer state) (gameObstacles state) = state {gameMode = (False, False, True)}
+  | collision (gamePlayer state) (gameObstacles state) = state {gameMode = GameOver}
   | otherwise = state{
       gamePlayer = updatePlayer dt (gamePlayer state),
       gameScore = (gameScore state) + dt,

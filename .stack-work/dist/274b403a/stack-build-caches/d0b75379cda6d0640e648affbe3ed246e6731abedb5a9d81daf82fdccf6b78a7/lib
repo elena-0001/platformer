@@ -1,23 +1,23 @@
 C:\Users\Lenoc\Desktop\platfomer\.stack-work\dist\274b403a\build\autogen\Paths_game.hs:
   hash: b9887262f00c4038748422e36fa4b73404a5e20a9378e61c80e71a0fc7b3931a
 C:\Users\Lenoc\Desktop\platfomer\src\GameTypes.hs:
-  hash: 0b6ffdc440b220f0b4ab5d7ca826e84236fc12eedd3281ad7f9171cc2e02fe25
+  hash: b6d5c1609d087cf7531645809a7d10f39bfc14104a6c7ca624296716a9655080
 C:\Users\Lenoc\Desktop\platfomer\game.cabal:
   hash: 2d04b3ec0789a26813992d94a3330da953b909a35e0ed3204220deadfe89de49
 C:\Users\Lenoc\Desktop\platfomer\src\GameDraw.hs:
-  hash: ea497e048e1349b645d7fd0dd66f0124469817a9f746d567bcdbbf93ddd1b9a2
+  hash: d6db5c945df952da2295d7df64f98c808b1291fa764b1112170a31eaea6efd0e
 C:\Users\Lenoc\AppData\Local\Programs\stack\x86_64-windows\ghc-8.10.4\lib\include\ghcversion.h:
   hash: ddf0d2a5b1862138ade2de39566db63c5db748c6df9abc567bd8b7326ae3838a
 C:\Users\Lenoc\Desktop\platfomer\src\GameUpdate.hs:
-  hash: 7dc58ae49707ac47155904257bf4b942430b0b478c827d0d426b5b410fe4b132
+  hash: c7e89bc84c83b266e024ed607a46527fa01411ec0a2c8c2fd49cbb26e66b8557
 C:\Users\Lenoc\Desktop\platfomer\src\GameHandle.hs:
-  hash: 878e5e789edcff4333f4fc784a678ec475374b83f4caf51377bd0c481408fd6f
+  hash: 88167b8636ed780b33fe954f1d0782b4c976f8d83cd11b752ff179d41798ac0b
 C:\Users\Lenoc\Desktop\platfomer\.stack-work\dist\274b403a\build\autogen\cabal_macros.h:
   hash: 1fd2e20eecd231a8b08a987fa2b45b60acac822164f22c46abfd0a0667781b72
 C:\Users\Lenoc\Desktop\platfomer\src\GameInit.hs:
-  hash: a5d56662b7e52a11d556a52f4b50e59b2ac0a296c3c539e517d59f3c213d8b93
+  hash: 5b4485dd5ebaa32cc245807fda711183206eabf4ae560c44eed00c85c493d26a
 C:\Users\Lenoc\Desktop\platfomer\src\Game.hs:
-  hash: ed8ece2499777fe53408394e9f62ccdc84e9ffc0a2174deb093ed58e26d74d83
+  hash: 618b85ae45d340c56084012154b1c42064a83ebab9ae8c99be606f6997fe4b40
 C:\Users\Lenoc\Desktop\platfomer\README.md:
   hash: 0a4bfd980c85ff7ac4d608bfd49e224bc5e456e2cd09daf3988090985a0e2dd7
 C:\Users\Lenoc\Desktop\platfomer\package.yaml:
