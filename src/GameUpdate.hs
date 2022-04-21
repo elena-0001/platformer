@@ -4,7 +4,7 @@ import GameTypes
 
 updateGame :: Time -> GameState -> GameState
 updateGame dt state
-  | collision (gamePlayer state) (gameObstacles state) = state {gameGameOver = True}
+  | collision (gamePlayer state) (gameObstacles state) = state {gameMode = (False, False, True)}
   | otherwise = state{
       gamePlayer = updatePlayer dt (gamePlayer state),
       gameScore = (gameScore state) + dt,

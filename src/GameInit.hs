@@ -4,15 +4,33 @@ import Graphics.Gloss.Interface.Pure.Game
 import GameTypes
 import System.Random
 
+initGameInit :: StdGen -> GameState -> GameState
+initGameInit g newstate = GameState
+  {gameObstacles = absoluteObstacles 300 newstate (initObstacles g),
+   gamePlayer = initPlayer,
+   gameScore  = 0,
+   gameBackground = initBackground,
+   gameMode = gameMode newstate, 
+   gamedefaultOffset = gamedefaultOffset newstate
+  }
+
+--initGameInit :: StdGen -> GameState
+--initGameInit g = GameState
+--  {gameBackground = initBackground,
+--   gameMode = (True, False, False)
+--  }
+
 -- Инициализация игрового поля
-initGame :: StdGen -> GameState
-initGame g = GameState
- {gameObstacles = absoluteObstacles 300 (initObstacles g),
-  gamePlayer = initPlayer,
-  gameScore  = 0,
-  gameBackground = initBackground,
-  gameGameOver = False
-}
+--initGame :: StdGen -> GameState
+--initGame g = GameState
+-- {gameObstacles = absoluteObstacles 300 state (initObstacles g),
+--  gamePlayer = initPlayer,
+--  gameScore  = 0,
+--  gameBackground = initBackground,
+--  gameGameOver = False,
+--  speedPlat = 550,
+--  gamedefaultOffset = 200
+--}
  
 -- Инициализирование начальное состояние игрока
 initPlayer :: Player
@@ -26,12 +44,12 @@ initPlayer = Square
   }
 
 --  Создание бесконечный списка препятствий /подправить
-absoluteObstacles :: Float -> [Obstacle] -> [Obstacle]
-absoluteObstacles _ [] = []
-absoluteObstacles x (ob:obs) = ob{
+absoluteObstacles :: Float -> GameState -> [Obstacle] -> [Obstacle]
+absoluteObstacles _ _ [] = []
+absoluteObstacles x g (ob:obs) = ob{
   xLeft = x - platformWidth, 
   xRight = x
-  } : absoluteObstacles (x + defaultOffset) obs
+  } : absoluteObstacles (x + (gamedefaultOffset g)) g obs 
 
 -- Инициализирование случайного бесконечного списка препятствий для игрового поля
 initObstacles :: StdGen -> [Obstacle]
@@ -62,3 +80,15 @@ initBackground = Square{
 -- | Инициализировать конец игры.
 initGameOver :: Point
 initGameOver = (0, 0)
+
+defaultState :: GameState
+defaultState = GameState
+ {gameObstacles = [],
+  gamePlayer = initPlayer,
+  gameScore  = 0,
+  gameBackground = initBackground,
+  gameMode = (True, False, False),
+--  gameGameOver = False,
+--  speedPlat = 550,
+  gamedefaultOffset = 200
+ }

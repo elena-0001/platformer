@@ -29,12 +29,12 @@ version :: Version
 version = Version [0,1,0,0] []
 bindir, libdir, dynlibdir, datadir, libexecdir, sysconfdir :: FilePath
 
-bindir     = "C:\\Users\\Lenoc\\Desktop\\platformer\\.stack-work\\install\\98d4038a\\bin"
-libdir     = "C:\\Users\\Lenoc\\Desktop\\platformer\\.stack-work\\install\\98d4038a\\lib\\x86_64-windows-ghc-8.10.4\\game-0.1.0.0-94jEhfuW4B0FwzJ8MDjzCn-game-exe"
-dynlibdir  = "C:\\Users\\Lenoc\\Desktop\\platformer\\.stack-work\\install\\98d4038a\\lib\\x86_64-windows-ghc-8.10.4"
-datadir    = "C:\\Users\\Lenoc\\Desktop\\platformer\\.stack-work\\install\\98d4038a\\share\\x86_64-windows-ghc-8.10.4\\game-0.1.0.0"
-libexecdir = "C:\\Users\\Lenoc\\Desktop\\platformer\\.stack-work\\install\\98d4038a\\libexec\\x86_64-windows-ghc-8.10.4\\game-0.1.0.0"
-sysconfdir = "C:\\Users\\Lenoc\\Desktop\\platformer\\.stack-work\\install\\98d4038a\\etc"
+bindir     = "C:\\Users\\Lenoc\\Desktop\\platfomer\\.stack-work\\install\\98d4038a\\bin"
+libdir     = "C:\\Users\\Lenoc\\Desktop\\platfomer\\.stack-work\\install\\98d4038a\\lib\\x86_64-windows-ghc-8.10.4\\game-0.1.0.0-94jEhfuW4B0FwzJ8MDjzCn-game-exe"
+dynlibdir  = "C:\\Users\\Lenoc\\Desktop\\platfomer\\.stack-work\\install\\98d4038a\\lib\\x86_64-windows-ghc-8.10.4"
+datadir    = "C:\\Users\\Lenoc\\Desktop\\platfomer\\.stack-work\\install\\98d4038a\\share\\x86_64-windows-ghc-8.10.4\\game-0.1.0.0"
+libexecdir = "C:\\Users\\Lenoc\\Desktop\\platfomer\\.stack-work\\install\\98d4038a\\libexec\\x86_64-windows-ghc-8.10.4\\game-0.1.0.0"
+sysconfdir = "C:\\Users\\Lenoc\\Desktop\\platfomer\\.stack-work\\install\\98d4038a\\etc"
 
 getBinDir, getLibDir, getDynLibDir, getDataDir, getLibexecDir, getSysconfDir :: IO FilePath
 getBinDir = catchIO (getEnv "game_bindir") (\_ -> return bindir)

@@ -25,11 +25,12 @@ imag bgrd pers gover = Images{
   picPlayer = pers,
   picGameOver = gover} 
 
+
 -- Run game. This is the ONLY unpure function.
 runGame :: Images -> IO ()
 runGame images= do
   g <- newStdGen
-  play display bgColor fps (initGame g) (drawGame images) handleEvent updateGame
+  play display bgColor fps (initGameInit g defaultState) (drawGame images) handleEvent updateGame
   where
     display = InWindow "Game" (screenWidth, screenHeight) (0,0)
     bgColor = black

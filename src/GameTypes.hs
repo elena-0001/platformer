@@ -15,13 +15,17 @@ data Square = Square{
 type Player = Square
 type Obstacle = Square
 type Background = Square
-
+    
 data GameState = GameState{
     gameObstacles :: [Obstacle]
-    ,gamePlayer :: Player
+    ,gamePlayer :: Player   
     ,gameBackground :: Background
     ,gameScore :: Float
-    ,gameGameOver :: Bool
+--    ,gameGameOver :: Bool
+--    ,gameScreen :: Bool -- new
+    ,gameMode :: (Bool, Bool, Bool) --gameScreen gameGame gameGameOver 
+--    ,speedPlat :: Float --new
+    ,gamedefaultOffset :: Float --new
     }
 
 data Images = Images{
@@ -31,9 +35,13 @@ data Images = Images{
     ,picGameOver :: Picture
     }
 
+
+
 speed :: Float
 speed = 500
 
+
+-- delete, User will enter
 speedPlat :: Float
 speedPlat = 550
 
@@ -59,6 +67,8 @@ platformWidth :: Float
 platformWidth = 20
 platformHeight :: Float
 platformHeight = 100
+
+-- delete, user will enter
 defaultOffset :: Float
 defaultOffset = 200
 
@@ -66,4 +76,7 @@ obstacleHeight :: (Float, Float)
 obstacleHeight = (-w, w)
   where
     w = (fromIntegral screenHeight - platformHeight) / 2
+    
+h_or_l :: String
+h_or_l = "Enter h or l" 
 
